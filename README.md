@@ -1,5 +1,15 @@
 # hello_drop
 
+
+**How to create a project of DropWizard**
+
+1. Run the command
+2. mvn archetype:generate
+  -DarchetypeGroupId=io.dropwizard.archetypes
+  -DarchetypeArtifactId=java-simple
+  -DarchetypeVersion=2.0.0
+  Please refer to the latest version then
+
 How to start the hello_drop application
 ---
 
@@ -11,3 +21,8 @@ Health Check
 ---
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
+
+
+**Must Check Condition **
+
+Check if the server is set to default
