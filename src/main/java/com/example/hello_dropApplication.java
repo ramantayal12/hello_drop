@@ -1,14 +1,8 @@
 package com.example;
 
-import com.example.api.event_class;
-import com.example.resources.event_resource_class;
+import com.example.resources.contact_resource_class;
 import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
-import io.dropwizard.jdbi.*;
-import org.skife.jdbi.v2.DBI;
-
-import javax.swing.*;
+import io.dropwizard.setup.*;
 
 public class hello_dropApplication extends Application<hello_dropConfiguration> {
 
@@ -32,12 +26,9 @@ public class hello_dropApplication extends Application<hello_dropConfiguration> 
         // TODO: implement application
 
         // to add a database file
-        final DBIFactory factory = new DBIFactory();
-        final DBI jdbi = factory.build(environment,configuration.getDataSourceFactory(),"mysql");
-        
 
         // we need to explicitly register a resource here
-        event_resource_class e = new event_resource_class();
+        contact_resource_class e = new contact_resource_class();
         environment.jersey().register(e);
 
     }

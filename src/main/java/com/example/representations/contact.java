@@ -1,11 +1,11 @@
-package com.example.api;
+package com.example.representations;
 
-public class event_class {
+public class contact {
 
     private int id;
     private String name;
 
-    public event_class(int id, String name) {
+    public contact(int id, String name ) {
         this.id = 0;
         this.name = null;
     }

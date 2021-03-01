@@ -7,8 +7,3 @@ server:
   type: default
   maxThreads: 1024
 
-database:
-  driverClass: com.mysql.jdbc.Driver
-  user: root
-  password: tayal12345
-  url: jdbc:mysql://localhost/data
