@@ -1,4 +1,6 @@
-# hello_drop
+# hello_dropwizard
+
+How to create a project of DropWizard 
 
 
 **How to create a project of DropWizard**
@@ -9,8 +11,9 @@
   -DarchetypeArtifactId=java-simple
   -DarchetypeVersion=2.0.0
   Please refer to the latest version then
+ 
 
-How to start the hello_drop application
+How to start the hello_dropwizard application
 ---
 
 1. Run `mvn clean install` to build your application

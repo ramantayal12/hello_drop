@@ -5,6 +5,11 @@ public class event_class {
     private int id;
     private String name;
 
+    public event_class(int id, String name) {
+        this.id = 0;
+        this.name = null;
+    }
+
     public int getId() {
         return id;
     }
