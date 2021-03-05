@@ -29,3 +29,9 @@ To see your applications health enter url `http://localhost:8081/healthcheck`
 **Must Check Condition **
 
 Check if the server is set to default
+
+
+Database Imformation:
+database name : data
+database table name : basic_data
+table contents : id int, name varchar(50)
