@@ -5,22 +5,23 @@ import com.codahale.metrics.annotation.Timed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/event")
+
+// every resource class must contain Path
+@Path("/update")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class contact_resource_class {
+public class contact_update_class {
 
     @GET
     @Timed
     public String say_hi(){
-        return "Hello Drop, This is our first URL";
+        return "Hello Drop, This is our Post Request URL";
     }
 
-    @GET
+    @POST
     @Path("/{id}")
-    public int getContact(@PathParam("id") int id ){
-
-        return id;
+    public String updateRecord(@PathParam("id") int id ) {
+        return "Successfully Updated";
     }
 
 }

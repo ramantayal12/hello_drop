@@ -1,8 +1,12 @@
 package com.example;
 
 import com.example.resources.contact_resource_class;
+import com.example.resources.contact_update_class;
 import io.dropwizard.Application;
+import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.*;
+import org.jdbi.v3.core.Jdbi;
+
 
 public class hello_dropApplication extends Application<hello_dropConfiguration> {
 
@@ -23,13 +27,20 @@ public class hello_dropApplication extends Application<hello_dropConfiguration> 
     @Override
     public void run(final hello_dropConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
 
-        // to add a database file
 
         // we need to explicitly register a resource here
         contact_resource_class e = new contact_resource_class();
         environment.jersey().register(e);
+
+        //
+        contact_update_class ex = new contact_update_class();
+        environment.jersey().register(ex);
+
+        // JDBI Factory
+        final JdbiFactory factory = new JdbiFactory();
+        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+        //environment.jersey().register((jdbi));
 
     }
 

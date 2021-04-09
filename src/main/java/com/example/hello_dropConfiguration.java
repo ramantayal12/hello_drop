@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 public class hello_dropConfiguration extends Configuration {
-    // TODO: implement service configuration
+
 
     /**
      * A factory used to connect to a relational database management system.
@@ -19,14 +19,6 @@ public class hello_dropConfiguration extends Configuration {
     @NotNull
     @Valid
     private DataSourceFactory datasourcefactory = new DataSourceFactory();
-
-    /**
-     * A getter for database factory
-     *
-     * @return An instance of database factory deserialized from the
-     * configuration file passed as a command-line argument to the application.
-     */
-
 
     @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory(){

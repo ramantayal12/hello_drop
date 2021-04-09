@@ -8,7 +8,12 @@ database:
   driverClass: com.mysql.jdbc.Driver
   user: root
   password: tayal12345
-  url: jdbc:mysql://localhost:3306:DWGettingStarted
+  url: jdbc:mysql://localhost:3306/data
+  #jdbc is API
+  #mysql is database
+  #localhost is server
+  #3306 is port number
+  #data is database name
 
 server:
   type: default
