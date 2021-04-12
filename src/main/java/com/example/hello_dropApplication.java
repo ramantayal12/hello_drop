@@ -33,14 +33,14 @@ public class hello_dropApplication extends Application<hello_dropConfiguration> 
         contact_resource_class e = new contact_resource_class();
         environment.jersey().register(e);
 
-        //
+        // we need to explicitly register a resource here
         contact_update_class ex = new contact_update_class();
         environment.jersey().register(ex);
 
         // JDBI Factory
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
-        //environment.jersey().register((jdbi));
+        environment.jersey().register( new contact_resource_class(jdbi));
 
     }
 
