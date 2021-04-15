@@ -82,6 +82,13 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -125,7 +132,7 @@
   </dependencyManagement>
   <properties>
     <dropwizard.version>2.0.0</dropwizard.version>
-    <mainClass>com.example.hello_dropApplication</mainClass>
+    <mainClass>com.example.helloDropApplication</mainClass>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>

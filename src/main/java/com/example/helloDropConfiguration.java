@@ -2,12 +2,15 @@ package com.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
+import io.dropwizard.client.HttpClientConfiguration;
+import io.dropwizard.client.JerseyClientConfiguration;
 import io.dropwizard.db.DataSourceFactory;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class hello_dropConfiguration extends Configuration {
+public class helloDropConfiguration extends Configuration {
 
 
     /**
@@ -28,5 +31,27 @@ public class hello_dropConfiguration extends Configuration {
     public void setDatabase(DataSourceFactory datasourcefactory) {
         this.datasourcefactory = datasourcefactory;
     }
+
+
+    /**
+     * Client Configuration
+     */
+
+    @Valid
+    @NotNull
+    private JerseyClientConfiguration jerseyClient = new JerseyClientConfiguration();
+
+    @JsonProperty("jerseyClient")
+    public JerseyClientConfiguration getJerseyClientConfiguration() {
+        return jerseyClient;
+    }
+
+    @JsonProperty("jerseyClient")
+    public void setJerseyClientConfiguration(JerseyClientConfiguration jerseyClient) {
+        this.jerseyClient = jerseyClient;
+    }
+
+
+
 
 }

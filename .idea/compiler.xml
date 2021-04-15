@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hello_drop" target="1.8" />
+      <module name="hello_drop" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
