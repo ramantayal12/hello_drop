@@ -1,32 +1,42 @@
 package com.example;
 
-import com.example.resources.clientResourceClass;
-import com.example.resources.contactResourceClass;
+import com.example.health.myHealthCheck;
+import com.example.resources.clientClass;
+import com.example.resources.contactClass;
 import com.example.resources.contactUpdateClass;
 import io.dropwizard.Application;
-import io.dropwizard.setup.*;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
 import okhttp3.OkHttpClient;
-import org.glassfish.jersey.client.JerseyClientBuilder;
+import com.hubspot.dropwizard.guice.GuiceBundle;
 
 
-public class helloDropApplication extends Application<helloDropConfiguration> {
+public class helloDropApplication extends Application<ServerConfiguration> {
 
     public static void main(final String[] args) throws Exception {
         new helloDropApplication().run(args);
     }
 
     @Override
-    public void initialize(final Bootstrap<helloDropConfiguration> bootstrap) {
+    public void initialize(final Bootstrap<ServerConfiguration> bootstrap) {
         // TODO: application initialization
+        GuiceBundle<ServerConfiguration> guiceBundle =
+                GuiceBundle.<ServerConfiguration>newBuilder()
+                .addModule(new ServerModule())
+                .setConfigClass(ServerConfiguration.class)
+                .enableAutoConfig(getClass().getPackage().getName())
+                .build();
+        bootstrap.addBundle(guiceBundle);
+
     }
 
     @Override
-    public void run(final helloDropConfiguration configuration,
-                    final Environment environment) {
+    public void run(final ServerConfiguration configuration,
+                    final Environment environment) throws Exception {
 
 
         // we need to explicitly register a resource here
-        contactResourceClass e = new contactResourceClass();
+        contactClass e = new contactClass();
         environment.jersey().register(e);
 
         // we need to explicitly register a resource here
@@ -35,8 +45,12 @@ public class helloDropApplication extends Application<helloDropConfiguration> {
 
         // working with client
         OkHttpClient client = new OkHttpClient();
-        clientResourceClass cex = new clientResourceClass(client);
+        clientClass cex = new clientClass(client);
         environment.jersey().register(cex);
+
+        // registering health check
+        environment.healthChecks().register("application",new myHealthCheck());
+
 
     }
 

@@ -20,7 +20,7 @@ public class contactUpdateClass {
 
     @POST
     @Path("/{id}")
-    public String updateRecord(@PathParam("id") int id ) {
+    public String updateRecord( @PathParam("id") int id ) {
         return "Successfully Updated";
     }
 
