@@ -5,14 +5,16 @@ import io.dropwizard.Configuration;
 import io.dropwizard.client.JerseyClientConfiguration;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class helloDropConfiguration extends Configuration {
 
-
-    /**
-     * Client Configuration
-     */
+    @NotEmpty
+    private String message;
+    public String getMessage() {
+        return message;
+    }
 
     @Valid
     @NotNull

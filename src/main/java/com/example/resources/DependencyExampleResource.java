@@ -2,10 +2,11 @@ package com.example.resources;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path ("/hey/dependency")
+@Singleton
 public class DependencyExampleResource {
 
     private final String message;
@@ -16,6 +17,7 @@ public class DependencyExampleResource {
     }
 
     @GET
+    @Path ("/hey/dependency")
     public String hello() {
         return message;
     }

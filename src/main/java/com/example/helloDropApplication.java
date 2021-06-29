@@ -11,28 +11,19 @@ import okhttp3.OkHttpClient;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 
 
-public class helloDropApplication extends Application<ServerConfiguration> {
+public class helloDropApplication extends Application<helloDropConfiguration> {
 
     public static void main(final String[] args) throws Exception {
         new helloDropApplication().run(args);
     }
 
     @Override
-    public void initialize(final Bootstrap<ServerConfiguration> bootstrap) {
-        // TODO: application initialization
-        GuiceBundle<ServerConfiguration> guiceBundle =
-                GuiceBundle.<ServerConfiguration>newBuilder()
-                .addModule(new ServerModule())
-                .setConfigClass(ServerConfiguration.class)
-                .enableAutoConfig(getClass().getPackage().getName())
-                .build();
-        bootstrap.addBundle(guiceBundle);
-
+    public void initialize(Bootstrap<helloDropConfiguration> bootstrap) {
     }
 
     @Override
-    public void run(final ServerConfiguration configuration,
-                    final Environment environment) throws Exception {
+    public void run(final helloDropConfiguration configuration,
+                    final Environment environment) {
 
 
         // we need to explicitly register a resource here
@@ -51,7 +42,9 @@ public class helloDropApplication extends Application<ServerConfiguration> {
         // registering health check
         environment.healthChecks().register("application",new myHealthCheck());
 
-
+        // registering bundle
+        ServerBundle serverBundle = new ServerBundle ();
+        environment.jersey ().register (serverBundle);
     }
 
 }
